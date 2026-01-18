@@ -1,0 +1,23 @@
+{
+  "name": "serverest-playwright-api-ts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API test automation for ServeRest using Playwright + TypeScript",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier -w ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.0.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
+}
