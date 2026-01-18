@@ -11,7 +11,8 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: [
     ['list'],
-    ['html', { open: 'never' }]
+    ['html', { open: 'never' }],
+    ['junit', { outputFile: 'test-results/results.xml' }]
   ],
   use: {
     baseURL: process.env.BASE_URL ?? 'https://serverest.dev',
