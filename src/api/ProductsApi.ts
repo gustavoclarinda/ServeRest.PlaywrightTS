@@ -58,12 +58,12 @@ const toProductQuery = (
 ) =>
   query
     ? {
-        nome: query.name,
-        preco: query.price,
-        descricao: query.description,
-        quantidade: query.quantity,
-        _id: query.id
-      }
+      nome: query.name,
+      preco: query.price,
+      descricao: query.description,
+      quantidade: query.quantity,
+      _id: query.id
+    }
     : undefined;
 
 export class ProductsApi {
@@ -84,7 +84,7 @@ export class ProductsApi {
   }
 
   async getById(id: string) {
-    const { res, body } = await this.client.get<ProductApiPayload>(`/produtos/${id}`);
+    const { res, body } = await this.client.get<ProductApiPayload>(`/produtos/teste`);
     return { res, body: fromProductPayload(body) };
   }
 
