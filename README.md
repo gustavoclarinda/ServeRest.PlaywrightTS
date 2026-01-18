@@ -1,73 +1,68 @@
 # ServeRest API – Playwright + TypeScript (Page Objects)
 
-Projeto de automação de testes **API** usando **Playwright Test + TypeScript**, apontando para a API do **ServeRest** (https://serverest.dev/).
+API test automation project using **Playwright Test + TypeScript**, targeting the **ServeRest** API (https://serverest.dev/).
 
-## O que tem aqui
+## What’s included
 
-- Testes para os endpoints:
+- Tests for the endpoints:
   - **Login** (`POST /login`)
-  - **Produtos** (`/produtos`)
-  - **Carrinhos** (`/carrinhos`, `DELETE /carrinhos/concluir-compra`, `DELETE /carrinhos/cancelar-compra`)
-- Arquitetura com **Page Objects** (aqui no contexto de API: *API Page Objects / API clients*) e reaproveitamento de código.
-- Fixtures para autenticação (token) e contexto de request.
+  - **Products** (`/produtos`)
+  - **Carts** (`/carrinhos`, `DELETE /carrinhos/concluir-compra`, `DELETE /carrinhos/cancelar-compra`)
+- **Page Object** architecture (API context: *API Page Objects / API clients*) with code reuse.
+- Fixtures for authentication (token) and request context.
 
-> Observação importante: Para conseguir criar produtos e carrinhos de forma confiável em um ambiente compartilhado, este projeto cria usuários temporários via `POST /usuarios` quando você não define credenciais no `.env`. Isso evita depender de contas que podem ser alteradas/deletadas por terceiros.
+> Important note: To reliably create products and carts in a shared environment, this project creates temporary users via `POST /usuarios` when you do not define credentials in `.env`. This avoids relying on accounts that may be changed or deleted by others.
 
-## Pré‑requisitos
+## Prerequisites
 
-- Node.js 18+ (recomendado 20+)
+- Node.js 18+ (20+ recommended)
 
-## Como rodar
+## How to run
 
-1) Instale dependências:
+1) Install dependencies:
 
 ```bash
 npm install
 npx playwright install
 ```
 
-2) (Opcional) Configure `.env` (use `.env.example` como base)
+2) (Optional) Configure `.env` (use `.env.example` as a base)
 
-3) Execute os testes:
+3) Run the tests:
 
 ```bash
 npm test
 ```
 
-4) Report HTML:
+4) HTML report:
 
 ```bash
 npm run report
 ```
 
-## Abrir no Visual Studio
+## Open in Visual Studio
 
-Este repositório é um projeto Node/TS padrão. Você pode:
+This repository is a standard Node/TS project. You can:
 
-- Abrir no **Visual Studio Code**: `File > Open Folder...`
-- Abrir no **Visual Studio 2022** (com workload Node.js): `File > Open > Folder...`
+- Open in **Visual Studio Code**: `File > Open Folder...`
+- Open in **Visual Studio 2022** (with Node.js workload): `File > Open > Folder...`
 
-## Estrutura
+## Structure
 
 ```
 src/
   api/
     ApiClient.ts
     LoginApi.ts
-    ProdutosApi.ts
-    CarrinhosApi.ts
-    UsuariosApi.ts
+    ProductsApi.ts
+    CartsApi.ts
+    UsersApi.ts
   fixtures/
     apiFixtures.ts
   utils/
     random.ts
 tests/
   login.spec.ts
-  produtos.spec.ts
-  carrinho.spec.ts
+  products.spec.ts
+  carts.spec.ts
 ```
-
-## Referências
-
-- Documentação/Swagger do ServeRest menciona os endpoints e a autenticação via header `Authorization`. citeturn10view0
-- Site do ServeRest: https://serverest.dev citeturn12search0

@@ -1,6 +1,6 @@
 import { test as base, request as playwrightRequest } from '@playwright/test';
 import { LoginApi } from '@src/api/LoginApi';
-import { UsuariosApi } from '@src/api/UsuariosApi';
+import { UsersApi } from '@src/api/UsersApi';
 import { randomEmail, randomString } from '@src/utils/random';
 
 type Creds = { email: string; password: string };
@@ -35,15 +35,15 @@ export const test = base.extend<Fixtures>({
       return;
     }
 
-    const usuarios = new UsuariosApi(apiRequest);
+    const users = new UsersApi(apiRequest);
     const tempEmail = randomEmail();
     const tempPass = `pw-${randomString('adm', 10)}`;
 
-    await usuarios.criar({
-      nome: `Admin ${randomString('sr')}`,
+    await users.create({
+      name: `Admin ${randomString('sr')}`,
       email: tempEmail,
       password: tempPass,
-      administrador: 'true'
+      isAdmin: true
     });
 
     await use({ email: tempEmail, password: tempPass });
@@ -59,15 +59,15 @@ export const test = base.extend<Fixtures>({
       return;
     }
 
-    const usuarios = new UsuariosApi(apiRequest);
+    const users = new UsersApi(apiRequest);
     const tempEmail = randomEmail();
     const tempPass = `pw-${randomString('usr', 10)}`;
 
-    await usuarios.criar({
-      nome: `User ${randomString('sr')}`,
+    await users.create({
+      name: `User ${randomString('sr')}`,
       email: tempEmail,
       password: tempPass,
-      administrador: 'false'
+      isAdmin: false
     });
 
     await use({ email: tempEmail, password: tempPass });

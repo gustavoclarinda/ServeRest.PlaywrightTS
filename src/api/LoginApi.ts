@@ -18,7 +18,7 @@ export class LoginApi {
   }
 
   login(payload: LoginRequest) {
-    // Swagger/Doc: token retornado em "authorization" e deve ser enviado no header Authorization nas rotas protegidas. citeturn10view0
+    // The API returns the token in "authorization"; send it as the Authorization header for protected routes.
     return this.client.post<LoginResponse>('/login', { data: payload });
   }
 }
