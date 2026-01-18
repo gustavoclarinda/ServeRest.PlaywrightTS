@@ -84,7 +84,7 @@ export class ProductsApi {
   }
 
   async getById(id: string) {
-    const { res, body } = await this.client.get<ProductApiPayload>(`/produtos/teste`);
+    const { res, body } = await this.client.get<ProductApiPayload>(`/produtos/${id}`);
     return { res, body: fromProductPayload(body) };
   }
 
